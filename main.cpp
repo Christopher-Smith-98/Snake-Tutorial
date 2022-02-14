@@ -26,9 +26,19 @@ int main()
 			// Update Snake Direction
 			UpdateDirection(snake.direction);
 
+			//Move Snake
 
+			//Collision Detection
+
+			//Has Eaton Food
+
+
+			//Draw screen
+
+			
 
 		}
+		//wait for snake
 	}
 
 

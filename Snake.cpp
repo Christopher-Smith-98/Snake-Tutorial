@@ -32,7 +32,7 @@
 					bDead = true;
 			//Chop off the snakes tail
 			snake.pop_back();
-
+//UPDATE FUNCTION
 			//Display to player
 			for (int i = 0; i < nScreenWidth * nScreenHeight; i++) screen[i] = L' ';
 
