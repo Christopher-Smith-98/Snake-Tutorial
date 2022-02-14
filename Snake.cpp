@@ -1,86 +1,10 @@
-#include <iostream>
-#include <list>
-#include <thread>
-using namespace std;
-
-#include <Windows.h>
-
-int nScreenWidth = 120;
-int nScreenHeight = 30;
-
-struct sSnakeSegment
-{
-	int x;
-	int y;
-};
 
 
 
 
-int main()
-{
-	// Create Screen Buffer
-	wchar_t* screen = new wchar_t[nScreenWidth * nScreenHeight];
-	HANDLE hConsole = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
-	SetConsoleActiveScreenBuffer(hConsole);
-	DWORD dwBytesWritten = 0; 
 
-	while (1)
-	{
-
-		list<sSnakeSegment> snake = { {60,15}, {61,15}, {62, 15}, {63,15}, {64, 15}, {65,15}, {66,15}, {67, 15}, {68,15}, {69, 15} };
-		int nFoodX = 30;
-		int nFoodY = 15;
-		int nScore = 0;
-		int nSnakeDirection = 3;
-		bool bDead = false;
-		bool bKeyLeft = false, bKeyRight = false, bKeyLeftOld = false, bKeyRightOld = false;
-
-
-		while (!bDead)
-		{
-			//Timing and Input
 		
-			//Get Input
-			auto t1 = chrono::system_clock::now();
-			while ((chrono::system_clock::now() - t1) < ((nSnakeDirection % 2 == 1) ? 120ms : 200ms))
-			{
-				bKeyRight = (0x8000 & GetAsyncKeyState((unsigned char)('\x27'))) != 0;
-				bKeyLeft = (0x8000 & GetAsyncKeyState((unsigned char)('\x25'))) != 0;
-
-				if (bKeyRight && !bKeyRightOld)
-				{
-					nSnakeDirection++;
-					if (nSnakeDirection == 4) nSnakeDirection = 0;
-				}
-
-				if (bKeyLeft && !bKeyLeftOld)
-				{
-					nSnakeDirection--;
-					if (nSnakeDirection == -1) nSnakeDirection = 3;
-				}
-				bKeyRightOld = bKeyRight;
-				bKeyLeftOld = bKeyLeft;
-			}
-			//Game Logic
-			//Update Snake Postion
-			switch (nSnakeDirection)
-			{
-			case 0: //UP
-				snake.push_front({ snake.front().x, snake.front().y - 1 });
-				break;
-			case 1: //RIGHT
-				snake.push_front({ snake.front().x + 1, snake.front().y });
-				break;
-			case 2: //DOWN
-				snake.push_front({ snake.front().x, snake.front().y + 1 });
-				break;
-			case 3: //LEFT
-				snake.push_front({ snake.front().x - 1, snake.front().y });
-				break;
-			}
-
-			//Collision Detection
+		
 			//Collision Detect Snake V World
 			if (snake.front().x < 0 || snake.front().x >= nScreenWidth)
 				bDead = true;
