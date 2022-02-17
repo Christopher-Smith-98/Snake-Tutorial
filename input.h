@@ -1,18 +1,20 @@
 #pragma once
 #include <iostream>
 #include <thread>
+#include <Windows.h>
+#include <list>
 #include "snake.h"
 #include "graphics.h"
-#include "input.h"
-#include <list>
 using namespace std;
+
+
 
 
 class Input
 {
 public:
-	
-	bool bKeyLeft = false, bKeyRight = false, bKeyLeftOld = false, bKeyRightOld = false;
+
+
 
 	void UpdateDirection(int& direction)
 	{

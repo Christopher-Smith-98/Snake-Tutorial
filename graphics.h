@@ -1,27 +1,15 @@
 #pragma once
 #include <iostream>
 #include <Windows.h>
-#include "snake.h"
 #include <thread>
 #include <list>
-
-int nScreenWidth = 120;
-int nScreenHeight = 30;
-
-// Create Screen Buffer
-wchar_t* screen = new wchar_t[nScreenWidth * nScreenHeight];
-HANDLE hConsole = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
-DWORD dwBytesWritten = 0;
+#include "snake.h"
+#include "input.h"
+using namespace std;
 
 class Graphics
 {
 public:
-	int nFoodX = 30;
-	int nFoodY = 15;
-	int nScore = 0;
-	list<sSnakeSegment> body = { {60,15}, {61,15}, {62, 15}, {63,15}, {64, 15}, {65,15}, {66,15}, {67, 15}, {68,15}, {69, 15} };
-	bool bDead = false;
-
 	void Buffer()
 	{
 		for (int i = 0; i < nScreenWidth * nScreenHeight; i++) screen[i] = L' ';
@@ -30,7 +18,7 @@ public:
 		
 	void Border()
 	{
-		wchar_t* CreateScreen(int nScreenWidth, int nScreenHeight);
+		wchar_t* CreateScreen(int nScreenWidth, int nScreenHeight)
 		{
 			for (int i = 0; i < nScreenWidth; i++)
 			{

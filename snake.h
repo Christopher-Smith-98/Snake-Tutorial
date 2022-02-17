@@ -1,9 +1,10 @@
 #pragma once
 #include <iostream>
 #include <thread>
+#include <Windows.h>
+#include <list>
 #include "graphics.h"
 #include "input.h"
-#include <list>
 using namespace std;
 
 struct sSnakeSegment
@@ -12,17 +13,10 @@ struct sSnakeSegment
 	int y;
 };
 
-int direction = 3;
 
 class Snake
 {
 public:
-	int nFoodX = 30;
-	int nFoodY = 15;
-	int nScore = 0;
-
-	list<sSnakeSegment> body = { {60,15}, {61,15}, {62, 15}, {63,15}, {64, 15}, {65,15}, {66,15}, {67, 15}, {68,15}, {69, 15} };
-	bool bDead = false;
 	
 	void Reset()
 	{
