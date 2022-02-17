@@ -2,49 +2,34 @@
 #include <iostream>
 #include <thread>
 #include "snake.h"
-
+#include "graphics.h"
+#include "input.h"
+#include <list>
 using namespace std;
-
-// Globals
-int nScreenWidth  = 120;
-int nScreenHeight = 30;
-
 
 int main()
 {
-	wchar_t* screen = CreateScreen(nScreenWidth, nScreenHeight);
-
-
-
+	Graphics graphics;
+	Snake snake;
+	graphics.Buffer();
+	
 	while (1)
 	{
-		Snake snake = Snake();
-		snake.Reset();
-
+		snake.Reset();	
 		while (!snake.bDead)
 		{
 			// Update Snake Direction
-			UpdateDirection(snake.direction);
-
-			//Move Snake
-
-			//Collision Detection
-
-			//Has Eaton Food
-
-
+			Input input;
+			input.UpdateDirection(direction);
+			snake.Move();
+			snake.Collision();
 			//Draw screen
-
-			
-
+			graphics.Border();
+			graphics.Update();
 		}
-		//wait for snake
+		//wait for space
+		while ((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0);
 	}
-
-
-
-
-
-
+	return 0;
 }
 
