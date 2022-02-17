@@ -3,6 +3,7 @@
 #include <thread>
 #include <Windows.h>
 #include <list>
+
 #include "snake.h"
 #include "graphics.h"
 using namespace std;
@@ -38,5 +39,13 @@ public:
 			bKeyRightOld = bKeyRight;
 			bKeyLeftOld = bKeyLeft;
 		}
+	}	
+
+	void WaitForRetry() {//wait for space
+		while ((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0);
 	}
+
+
+
+
 };

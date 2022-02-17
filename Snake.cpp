@@ -1,4 +1,3 @@
-
 int nScreenWidth = 120;
 int nScreenHeight = 30;
 
