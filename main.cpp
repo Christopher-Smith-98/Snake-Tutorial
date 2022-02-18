@@ -12,17 +12,6 @@ using namespace std;
 int nScreenWidth = 120;
 int nScreenHeight = 30;
 
-//snake
-int nFoodX = 30;
-int nFoodY = 15;
-int nScore = 0;
-int direction = 3;
-list<sSnakeSegment> body = { {60,15}, {61,15}, {62, 15}, {63,15}, {64, 15}, {65,15}, {66,15}, {67, 15}, {68,15}, {69, 15} };
-bool bDead = false;
-bool bKeyLeft = false, bKeyRight = false, bKeyLeftOld = false, bKeyRightOld = false;
-
-
-
 
 int main()
 {
@@ -30,7 +19,7 @@ int main()
 	Graphics graphics;
 	Snake snake;
 
-
+	graphics.CreateBuffer(nScreenHeight, nScreenHeight);
 	
 	while (1)
 	{
@@ -42,12 +31,12 @@ int main()
 
 			input.UpdateDirection(snake.direction);
 			snake.Move();
-			snake.CheckCollision();
+			snake.CheckCollision(graphics); //can't add .screen because no suitable constructor for wchar_t 
 			//Draw screen
 			graphics.DrawBorder();
 			graphics.Draw(snake);
 		}
-		
+		input.WaitForRetry();
 	}
 	return 0;
 }

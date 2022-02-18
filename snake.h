@@ -53,7 +53,7 @@ public:
 		}
 	}
 
-	void CheckCollision()
+	void CheckCollision(Graphics)
 	{
 		//Collision Detect Snake V World
 

@@ -14,8 +14,7 @@ using namespace std;
 class Input
 {
 public:
-
-
+	bool bKeyLeft = false, bKeyRight = false, bKeyLeftOld = false, bKeyRightOld = false;
 
 	void UpdateDirection(int& direction)
 	{
@@ -44,8 +43,4 @@ public:
 	void WaitForRetry() {//wait for space
 		while ((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0);
 	}
-
-
-
-
 };
