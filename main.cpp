@@ -19,7 +19,7 @@ int main()
 	Graphics graphics;
 	Snake snake;
 
-	graphics.CreateBuffer(nScreenHeight, nScreenHeight);
+	graphics.CreateBuffer(nScreenWidth, nScreenHeight);
 	
 	while (1)
 	{

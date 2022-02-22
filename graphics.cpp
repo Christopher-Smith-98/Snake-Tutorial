@@ -22,7 +22,7 @@ void Graphics::ClearScreen() {
 
 void Graphics::DrawBorder(Snake snake)
 {
-	for (int i = 0; i < nScreenWidth; i++)
+	for (int i = 0; i < w; i++)
 	{
 		screen[i] = L'=';
 		screen[2 * w + i] = L'=';
@@ -43,7 +43,7 @@ void Graphics::DrawFood(Snake snake) {
 
 void Graphics::DrawPlayAgain(Snake snake) {
 	if (snake.bDead)
-		wsprintf(&screen[15 * nScreenWidth + 40], L"    PRESS 'SPACE' TO PLAY AGAIN!    ");
+		wsprintf(&screen[15 * w + 40], L"    PRESS 'SPACE' TO PLAY AGAIN!    ");
 }
 
 void Graphics::DisplayFrame() {

@@ -25,7 +25,7 @@ public:
 	void DrawPlayAgain(Snake snake);
 	void DisplayFrame();
 	void Draw(Snake snake);
-}
+};
 
 
 
