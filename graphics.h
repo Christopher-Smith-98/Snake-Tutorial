@@ -30,18 +30,21 @@ public:
 		for (int i = 0; i < w * h; i++) screen[i] = L' ';
 	}
 
-	void DrawBorder()
+	void DrawBorder(Snake snake)
 	{
-		screen[i] = L'=';
-		screen[2 * w + i] = L'=';
-		wsprintf(&screen[h + 5], L" T H E - S N A K E - G A M E                               SCORE: %d", nScore);
+		for (int i = 0; i < nScreenWidth; i++)
+		{
+			screen[i] = L'=';
+			screen[2 * w + i] = L'=';
+		}
+		wsprintf(&screen[h + 5], L" T H E - S N A K E - G A M E                               SCORE: %d", snake.nScore);
 	}
 
 	void DrawSnake(Snake snake) {
 		for (auto s : snake.body)
 			screen[s.y * w + s.x] = snake.bDead ? L'+' : L'O';
 
-		screen[body.front().y * w + body.front().x] = bDead ? L'X' : L'@';
+		screen[snake.body.front().y * w + snake.body.front().x] = snake.bDead ? L'X' : L'@';
 	}
 
 	void DrawFood(Snake snake) {
@@ -60,7 +63,7 @@ public:
 	void Draw(Snake snake)
 	{
 		ClearScreen();
-		DrawBorder();
+		DrawBorder(snake);
 		DrawSnake(snake);
 		DrawFood(snake);
 		DrawPlayAgain(snake);

@@ -4,7 +4,6 @@
 #include <Windows.h>
 #include <list>
 #include "graphics.h"
-#include "input.h"
 using namespace std;
 
 struct sSnakeSegment
@@ -53,21 +52,19 @@ public:
 		}
 	}
 
-	void CheckCollision(Graphics)
+	void CheckCollision(Graphics graphics)
 	{
 		//Collision Detect Snake V World
-
 		if (body.front().x < 0 || body.front().x >= nScreenWidth)
 			bDead = true;
 		if (body.front().y < 3 || body.front().y >= nScreenWidth)
 			bDead = true;
 
 		// Collision Detect Snake V Food
-
 		if (body.front().x == nFoodX && body.front().y == nFoodY)
 		{
 			nScore++;
-			while (screen[nFoodY * nScreenWidth + nFoodX] != L' ')
+			while (graphics.screen[nFoodY * nScreenWidth + nFoodX] != L' ')
 			{
 				nFoodX = rand() % nScreenWidth;
 				nFoodY = (rand() % (nScreenHeight - 3)) + 3;
@@ -77,7 +74,6 @@ public:
 		}
 
 		//Collision Detect Snake V Snake
-
 		for (list<sSnakeSegment>::iterator i = body.begin(); i != body.end(); i++)
 			if (i != body.begin() && i->x == body.front().x && i->y == body.front().y)
 				bDead = true;
@@ -85,15 +81,6 @@ public:
 		//Chop off the snakes tail
 		body.pop_back();	
 	}
-
-
-
-
-
-
-
-
-
 
 };
 

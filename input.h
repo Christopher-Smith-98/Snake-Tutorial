@@ -3,13 +3,7 @@
 #include <thread>
 #include <Windows.h>
 #include <list>
-
-#include "snake.h"
-#include "graphics.h"
 using namespace std;
-
-
-
 
 class Input
 {

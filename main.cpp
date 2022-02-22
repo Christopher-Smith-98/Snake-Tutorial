@@ -28,12 +28,11 @@ int main()
 		while (!snake.bDead)
 		{
 			// Update Snake Direction
-
 			input.UpdateDirection(snake.direction);
 			snake.Move();
-			snake.CheckCollision(graphics); //can't add .screen because no suitable constructor for wchar_t 
-			//Draw screen
-			graphics.DrawBorder();
+			snake.CheckCollision(graphics); // Can't add .screen because no suitable constructor for wchar_t 
+			
+			// Draw screen
 			graphics.Draw(snake);
 		}
 		input.WaitForRetry();
