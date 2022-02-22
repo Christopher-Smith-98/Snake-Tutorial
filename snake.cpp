@@ -41,7 +41,7 @@ void Snake::CheckCollision(Graphics graphics)
 	//Collision Detect Snake V World
 	if (body.front().x < 0 || body.front().x >= graphics.w)
 		bDead = true;
-	if (body.front().y < 3 || body.front().y >= graphics.w)
+	if (body.front().y < 3 || body.front().y >= graphics.h)
 		bDead = true;
 
 	// Collision Detect Snake V Food
