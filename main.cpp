@@ -8,10 +8,8 @@
 #include "input.h"
 using namespace std;
 
-
 int nScreenWidth = 120;
 int nScreenHeight = 30;
-
 
 int main()
 {

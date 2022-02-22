@@ -10,7 +10,6 @@ struct sSnakeSegment
 	int y;
 };
 
-
 class Snake
 {
 public:
