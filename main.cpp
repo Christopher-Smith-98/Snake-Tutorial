@@ -30,12 +30,13 @@ int main()
 			// Update Snake Direction
 			input.UpdateDirection(snake.direction);
 			snake.Move();
-			snake.CheckCollision(graphics); // Can't add .screen because no suitable constructor for wchar_t 
+			snake.CheckCollision(graphics, input);
 			
 			// Draw screen
 			graphics.Draw(snake);
 		}
 		input.WaitForRetry();
+		input.Reset();
 	}
 	return 0;
 }

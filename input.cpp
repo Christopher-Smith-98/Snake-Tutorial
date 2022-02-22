@@ -9,7 +9,7 @@ using namespace std;
 void Input::UpdateDirection(int& direction)
 {
 	auto t1 = chrono::system_clock::now();
-	while ((chrono::system_clock::now() - t1) < ((direction % 2 == 1) ? gameSpeed * aspectratio : gameSpeed))
+	while ((chrono::system_clock::now() - t1) < chrono::milliseconds((int)((direction % 2 == 1) ? gameTickRate * aspectratio : gameTickRate)))
 	{
 		bKeyRight = (0x8000 & GetAsyncKeyState((unsigned char)('\x27'))) != 0;
 		bKeyLeft = (0x8000 & GetAsyncKeyState((unsigned char)('\x25'))) != 0;
@@ -35,3 +35,7 @@ void Input::WaitForRetry()
 	while ((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0);
 }
 
+void Input::Reset()
+{
+	gameTickRate = startingGameTickRate;
+}

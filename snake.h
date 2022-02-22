@@ -1,7 +1,7 @@
 #pragma once
 #include <list>
 class Graphics;
-
+class Input;
 using namespace std;
 
 struct sSnakeSegment
@@ -23,5 +23,5 @@ public:
 
 	void Reset();
 	void Move();
-	void CheckCollision(Graphics graphics);
+	void CheckCollision(Graphics graphics, Input& input);
 };

@@ -5,6 +5,7 @@
 #include <list>
 #include "graphics.h"
 #include "snake.h"
+#include "input.h"
 using namespace std;
 
 void Snake::Reset()
@@ -36,7 +37,7 @@ void Snake::Move()
 	}
 }
 
-void Snake::CheckCollision(Graphics graphics)
+void Snake::CheckCollision(Graphics graphics, Input& input)
 {
 	//Collision Detect Snake V World
 	if (body.front().x < 0 || body.front().x >= graphics.w)
@@ -48,6 +49,7 @@ void Snake::CheckCollision(Graphics graphics)
 	if (body.front().x == nFoodX && body.front().y == nFoodY)
 	{
 		nScore++;
+		input.gameTickRate *= 0.9; // increases snakes speed when it eats food
 		while (graphics.screen[nFoodY * graphics.w + nFoodX] != L' ')
 		{
 			nFoodX = rand() % graphics.w;
