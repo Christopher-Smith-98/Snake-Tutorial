@@ -8,5 +8,6 @@ Features:<br />
 - Death and respawn
 - Game Restarts 
 
+![snake](https://user-images.githubusercontent.com/98556925/155580487-2b6e411b-469e-41ba-b476-0d2b13892bbb.gif)
 
 Christopher Smith
